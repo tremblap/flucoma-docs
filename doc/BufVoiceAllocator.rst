@@ -11,91 +11,96 @@
 
 :process: The non real time version of the object.
 :output: The names of the three buffers in which the data has been stored: [0] is a buffer containing the frequencies, [1] is a buffer containing the magnitudes and [3] is a buffer containing their respective states. Each buffer has a channel per voice.
-
-:control voiced:
-
-    The buffer in which to store the processed voice state data.
     
-:control birthhighthreshold:
+:control freqIn:
 
-    The threshold in dB above which to consider a peak to start tracking for the high end of the spectrum. It is interpolated across the spectrum until birthlowthreshold at DC.
-    
-:control birthlowthreshold:
+   freq in buf
 
-    The threshold in dB above which to consider a peak to start tracking for the low end of the spectrum. It is interpolated across the spectrum until birthhighthreshold at half-nyquist.
+:control magIn:
 
-:control freqed:
+   mag in buf
 
-    The buffer in which to store the processed frequency data.
-    
-:control frequencies:
+:control startFrameA:
 
-    The buffer from which to take frequency data from.
-    
-:control magned:
+   Where in the srcBuf should the process start, in samples.
 
-    The buffer in which to store the processed magnitude data.
-    
-:control magnitudes:
+:control numFramesA:
 
-    The buffer from which to take magnitude data from.
-    
-:control maxnumvoices:
+   How many frames should be processed.
 
-    Up to how many voices can be reported, by allocating memory at instantiation time. This cannot be modulated.
-    
-:control mintracklen:
+:control startChanA:
 
-    The minimum duration, in frames, for a track to be considered for a voice. It allows the removal of bubbly pitchy artefacts, but is more CPU intensive and might reject quick pitch material.
-    
-:control numchansa:
-    
-    For multichannel srcBuf, how many channels should be processed from the first buffer.
-    
-:control numchansb:
-    
-    For multichannel srcBuf, how many channels should be processed from the second buffer.
-    
-:control numframesa:
+   For multichannel srcBuf, which channel should be processed first.
 
-    How many frames should be processed from the first buffer.
+:control numChansA:
 
-:control numframesb:
-    
-    How many frames should be processed from the second buffer.
-    
-:control numvoices:
+   For multichannel srcBuf, how many channels should be processed.
 
-    The number of voices to keep track of and output. It is capped by ''maxnumvoices''.
-    
-:control prioritisedvoices:
+:control startFrameB:
 
-    The order in which to prioritise peaks for voice assignment if an input array is bigger than ''numvoices''.
-    
-:control startchana:
+   Where in the srcBuf should the process start, in samples.
 
-    For multichannel srcBuf, which channel should be processed first for the first input buffer.
+:control numFramesB:
 
-:control startchanb:
+   How many frames should be processed.
 
-    For multichannel srcBuf, which channel should be processed first for the second input buffer.
+:control startChanB:
 
-:control startframea:
+   For multichannel srcBuf, which channel should be processed first.
 
-    Where in the srcBuf should the process start, in samples, for the first input buffer.
+:control numChansB:
 
-:control startframeb:
+   For multichannel srcBuf, how many channels should be processed.
 
-    Where in the srcBuf should the process start, in samples, for the second input buffer.
+:control freqOut:
 
-:control trackfreqrange:
+   freq out buf
 
-    The frequency difference allowed for a track to diverge between frames, in Hertz.
-    
-:control trackmagrange:
+:control magOut:
 
-    The amplitude difference allowed for a track to diverge between frames, in dB.
-    
-:control trackprob:
+   mag out buf
 
-    The probability of the tracking algorithm to find a track.
+:control voiceState:
+
+   state out buf
+
+:control numVoices:
+   
+   The number of voices to keep track of and output. It is capped by ``maxNumVoices``
+
+:control prioritisedVoices:
+
+   The order in which to prioritise peaks for voice assignment if an input array is bigger than ``numVoices``.
+
+:control birthLowThreshold:
+
+   The threshold in dB above which to consider a peak to start tracking, for the low end of the spectrum. It is interpolated across the spectrum until birthHighThreshold at half-Nyquist.
+
+:control birthHighThreshold:
+
+   The threshold in dB above which to consider a peak to start tracking, for the high end of the spectrum. It is interpolated across the spectrum until birthLowThreshold at DC.
+
+:control minTrackLen:
+
+   The minimum duration, in frames, for a track to be considered for a voice. It allows to remove bubbly pitchy artefacts, but is more CPU intensive and might reject quick pitch material.
+
+:control trackMethod:
+
+   Currently not implemented as 
+   The algorithm used to track peak continuity between frames. 0 is the default, "Greedy", and 1 is a more expensive [^"Hungarian"]( Neri, J., and Depalle, P., "Fast Partial Tracking of Audio with Real-Time Capability through Linear Programming". Proceedings of DAFx-2018. ) one.
+
+:control trackMagRange:
+
+   The amplitude difference allowed for a track to diverge between frames, in dB.
+
+:control trackFreqRange:
+
+   The frequency difference allowed for a track to diverge between frames, in Hertz.
+
+:control trackProb:
+
+   The probability of the tracking algorithm to find a track.
+
+:control maxNumVoices:
+
+   Up to how many voices can be reported, by allocating memory at instantiation time. This cannot be modulated.
