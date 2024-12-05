@@ -12,7 +12,7 @@ c = {var input = In.ar(b);
 )
 
 (
-o = OSCFunc({
+o = OSCdef(\allocMonitor, {
     arg msg;
 	"freqI + magI ".post; msg[3..12].round(0.01).postln;
 	"freqO + magO ".post; msg[13..24].round(0.01).postln;
@@ -32,7 +32,7 @@ e.free
 d.free
 g.free
 
-// add 6 sines too quiet too high so should not voice steal the looudest lowst 2 remaining
+// add 6 sines too quiet too high so should not voice steal the loudest lowst 2 remaining
 
 i = {Out.ar(b,SinOsc.ar(700.series(750,950),mul: 0.02).sum)}.play
 i.free
