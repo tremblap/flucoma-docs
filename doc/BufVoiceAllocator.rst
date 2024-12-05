@@ -62,7 +62,12 @@
 
 :control voiceState:
 
-   state out buf
+   state out buf 
+   kFreeState
+   kAttackState
+   kSustainState
+   kReleaseState
+   kStolenState
 
 :control numVoices:
    
