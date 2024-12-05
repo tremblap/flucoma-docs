@@ -5,7 +5,7 @@
 :see-also: Sines, SineFeature
 :description: Dynamic frame based voice allocation.
 :discussion: 
-   This process takes in arrays of related frequency and magnitude data, and just like :fluid-obj:`Sines`, first tracks them as peaks to check if they are a continuation of a previous peak.
+   This process takes in arrays of related frequency and magnitude data, and just like :fluid-obj:`Sines`, and attempts to create continuous tracks. It does so by assigning each peak to a previous peak within the conditions defined.
 
    After this track assignment, the number of peaks is capped to the user-defined ``numVoices`` in order of lowest frequency or loudest magnitude. The final step then assigns these peaks to voices and tracks their states.
 
