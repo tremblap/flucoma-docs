@@ -1,5 +1,5 @@
 :digest: Dynamic Voice Allocation
-:species: transformer
+:species: descriptor
 :sc-categories: Libraries>FluidDecomposition
 :sc-related: Guides/FluidCorpusManipulation, Classes/SinOsc
 :see-also: Sines, SineFeature
@@ -9,13 +9,16 @@
 
    After this track assignment, the number of peaks is capped to the user-defined ``numVoices`` in order of lowest frequency or loudest magnitude. The final step then assigns these peaks to voices and tracks their states.
 
-:process: The control rate version of the object.
 :output: An array of three control streams: [0] is the frequency of each voice, [1] is their respective magnitudes, and [2] is their respective states. The latency between the input and the output is 0 samples.
 
 
-:control in:
+:message in:
 
-   The input to be processed
+   The frequency list to be processed.
+
+:message in2:
+
+   The magnitude list to be processed.
 
 :control numVoices:
    
