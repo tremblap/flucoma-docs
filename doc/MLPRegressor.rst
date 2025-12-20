@@ -27,7 +27,7 @@
       **identity** (the output range can be any value)
      
      :1: 
-      **sigmoid** (the output will always range be greater than 0 and less than 1)
+      **sigmoid** (the output range will always be greater than 0 and less than 1)
      
      :2: 
       **relu** (the output will always be greater than or equal to 0)
